@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   
 }
 
 @media (max-width: 720px){
@@ -22,8 +23,16 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body{
-    font-family: "Inter", sans-serif;
+   
+    background: #170312;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    -webkit-font-smoothing: antialiased; 
+    
  
+}
+button{
+    cursor: pointer;
 }
 
 `;
