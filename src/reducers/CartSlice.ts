@@ -1,12 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
+interface Products {
+  _id?: string;
+  name: string;
+  ingredients: string;
+  image: string;
+}
+
 interface cartState {
-  item: number;
+  products: Products[];
 }
 
 const initialState: cartState = {
-  item: 0,
+  products: [],
 };
 
 const cartSlice = createSlice({
@@ -15,25 +22,29 @@ const cartSlice = createSlice({
   initialState,
 
   reducers: {
-    addItemToCart: (state) => {
-      state.item += 1;
+    addItemToCart: (state, payload: PayloadAction<Products>) => {
+      let productsCopy = [...state.products];
+      productsCopy.push({ ...payload.payload });
+
+      return {
+        ...state,
+        products: productsCopy,
+      };
     },
 
-    removeFromCart: (state) => {
-      state.item -= 1;
-    },
-
-    addItemByAmount: (state, action: PayloadAction<number>) => {
-      state.item += action.payload;
+    removeFromCart: (state) => {},
+    addItemByAmount: (state, action: PayloadAction<number>) => {},
+    reset: (state) => {
+      return initialState;
     },
   },
 });
 
-export const { addItemToCart, removeFromCart, addItemByAmount } =
+export const { addItemToCart, reset, removeFromCart, addItemByAmount } =
   cartSlice.actions;
 
 //
 
-export const selectCount = (state: RootState) => state.cart.item;
+export const selectCount = (state: RootState) => state.cart;
 
 export default cartSlice.reducer;
