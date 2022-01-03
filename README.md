@@ -13,7 +13,7 @@
 
 <p>
 
-Açai+ é uma loja onde o usuário tem a possibilidade de escolher produtos para adicinar no carrinho e incrementar o mesmo. Está sendo utilizado o firebase para a API rest para consumo dos produtos, Redux toolkit para maninupação de estados na aplicação, e o redux persistor para a persistencia dos dados. (Em construção... )
+Açai+ é uma loja onde o usuário tem a possibilidade de escolher produtos para adicionar no carrinho e incrementar os mesmos. Os produtos estão sendo consumidos do Firebase, Redux toolkit para maninupação de estados na aplicação, e o redux persistor para a persistencia dos dados. (Em construção... )
 
 </p>
 
