@@ -1,3 +1,11 @@
+import { Header } from "../components/Header";
+import { Shop } from "../components/Shop";
+
 export function HomePage() {
-  return <h1>Home page</h1>;
+  return (
+    <>
+      <Header />
+      <Shop />
+    </>
+  );
 }
