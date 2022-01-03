@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "_id": "1",
+      "name": "Açai Puro ",
+      "price": "10.90",
+      "ingredients": "poupa açai, guaraná, etc",
+      "image": "https://blogdamimis.com.br/wp-content/uploads/2016/01/a%C3%A7ai-engorda-ou-emagrece-blog-da-mimis-michelle-franzoni-destaque.png"
+    },
+    {
+      "_id": "2",
+      "name": "Açai com Morango ",
+      "price": "10.90",
+      "ingredients": "poupa açai, guaraná, etc",
+      "image": "https://i.pinimg.com/originals/57/ba/cf/57bacfcdbe39d98493ac99986cc7b5ae.jpg"
+    },
+    {
+      "_id": "3",
+      "name": "Açai com Chocolate ",
+      "price": "10.90",
+      "ingredients": "poupa açai, guaraná, etc",
+      "image": "https://uacaibrasil.com.br/wp-content/uploads/2018/06/lambe-bei%C3%A7o.jpg"
+    },
+    {
+      "_id": "4",
+      "name": "Açai Especial ",
+      "price": "10.90",
+      "ingredients": "poupa açai, guaraná, etc",
+      "image": "https://content.portaldofranchising.com.br/wp-content/uploads/2018/04/17180153/franquias-de-acai-1.jpg"
+    }
+  ]
+}
