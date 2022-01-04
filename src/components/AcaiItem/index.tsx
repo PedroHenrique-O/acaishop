@@ -5,10 +5,12 @@ import { Button } from "../Button/styled";
 import { ProductsItem } from "./styled";
 
 interface AcaiItemProps {
-  _id?: string;
+  _id: string;
   name: string;
   image: string;
   ingredients: string;
+  amount: number;
+  price: string;
 }
 
 export function AcaiItem(data: AcaiItemProps) {
@@ -24,6 +26,7 @@ export function AcaiItem(data: AcaiItemProps) {
       </div>
       <div className="infoWrapp">
         <h1>{acai.name}</h1>
+        <h4> R$ {acai.price} </h4>
         <p>{acai.ingredients}</p>
       </div>
       {/* <button onClick={() => dispatch(reset())}> delete </button> */}
