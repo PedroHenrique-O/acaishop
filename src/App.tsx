@@ -1,10 +1,10 @@
-import { HomePage } from "./pages/HomePage";
+import { Router } from "./router";
 import { GlobalStyle } from "./styles/global";
 
 function App() {
   return (
     <>
-      <HomePage />
+      <Router />
       <GlobalStyle />
     </>
   );
