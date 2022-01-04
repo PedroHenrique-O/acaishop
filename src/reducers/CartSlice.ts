@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { useAppDispatch } from "./hooks";
 import { RootState } from "./store";
 
 interface Products {
@@ -37,12 +38,26 @@ const cartSlice = createSlice({
     },
 
     removeFromCart: (state, { payload }: PayloadAction<Products>) => {
-      let productsCopy = [...state.products];
-      let removeProducts = productsCopy.filter(
+      state.products = state.products.filter(
         (product) => product._id !== payload._id
       );
+    },
+    incrementAmount: (state, { payload }: PayloadAction<Products>) => {
+      let existProduct = state.products.find(
+        (item) => item._id === payload._id
+      );
 
-      return { ...state, products: removeProducts };
+      existProduct && existProduct.amount++;
+    },
+    decrementAmount: (state, { payload }: PayloadAction<Products>) => {
+      let existProduct = state.products.find(
+        (item) => item._id === payload._id
+      );
+      existProduct!.amount > 1
+        ? existProduct!.amount--
+        : (state.products = state.products.filter(
+            (item) => item._id !== payload._id
+          ));
     },
 
     reset: () => {
@@ -51,7 +66,13 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItemToCart, reset, removeFromCart } = cartSlice.actions;
+export const {
+  addItemToCart,
+  reset,
+  removeFromCart,
+  incrementAmount,
+  decrementAmount,
+} = cartSlice.actions;
 
 //
 
