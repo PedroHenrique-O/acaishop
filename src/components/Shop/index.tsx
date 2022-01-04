@@ -6,23 +6,23 @@ import { AcaiItem } from "../AcaiItem";
 import { Container } from "./styled";
 
 interface Products {
-  _id?: string;
+  _id: string;
   name: string;
   ingredients: string;
   image: string;
+  amount: number;
+  price: string;
 }
 
 export function Shop() {
   const [products, setProducts] = useState<Products[]>([]);
   const cart = useAppSelector(selectCount);
   console.log(cart.products);
+  console.log("Products: ", products);
 
   const getProducts = async () => {
-    const req = await fetch(
-      "https://acaiproject-34156-default-rtdb.firebaseio.com/products.json"
-    );
-    //  const req = await api.get("/products");
-    const data = await req.json();
+    const req = await api.get("/products.json");
+    const data = await req.data;
     setProducts(data);
   };
   useEffect(() => {
