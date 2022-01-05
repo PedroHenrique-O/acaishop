@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   incrementAmount,
   removeFromCart,
@@ -7,7 +6,9 @@ import {
 import { useAppDispatch, useAppSelector } from "../../reducers/hooks";
 import { Header } from "../Header";
 import { Container } from "./styled";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineDelete, AiOutlineMinus } from "react-icons/ai";
+import { Button } from "../Button/styled";
+import { formatCurrency } from "../../utilitys/formatCurrency";
 
 interface Products {
   _id: string;
@@ -16,9 +17,6 @@ interface Products {
   ingredients: string;
   amount: number;
   price: string;
-}
-interface cartState {
-  products: Products[];
 }
 
 export function Cart() {
@@ -36,6 +34,14 @@ export function Cart() {
     dispatch(decrementAmount(cart));
   };
 
+  const subTotal = (amount: number, price: string) => {
+    return formatCurrency(amount * parseFloat(price));
+  };
+
+  const total = cart.reduce((total, item) => {
+    return total + item.amount * parseFloat(item.price);
+  }, 0);
+
   return (
     <>
       <Header />
@@ -51,45 +57,49 @@ export function Cart() {
             </tr>
           </thead>
 
-          {cart.map((cart) => (
-            <tbody key={cart._id}>
+          {cart.map((products) => (
+            <tbody key={products._id}>
               <>
                 <tr>
                   <td>
-                    <img src={cart.image} alt={cart.name} />
+                    <img src={products.image} alt={products.name} />
                   </td>
                   <td>
-                    <h3> {cart.name}</h3>
-                    <p>{cart.ingredients}</p>
+                    <h3> {products.name}</h3>
+                    <p>{products.ingredients}</p>
                   </td>
 
                   <td>
                     <div>
-                      <span onClick={() => handleDecrementAmount(cart)}>
+                      <span onClick={() => handleDecrementAmount(products)}>
                         <AiOutlineMinus />
                       </span>
-                      {cart.amount}
-                      <span onClick={() => handleIncrementAmount(cart)}>
+                      {products.amount}
+                      <span onClick={() => handleIncrementAmount(products)}>
                         <AiOutlinePlus />
                       </span>
                     </div>
                   </td>
-                  <td> {cart.price}</td>
-                  <td
-                    style={{
-                      cursor: "pointer",
-                      color: "#ff0000",
-                      fontSize: "2rem",
-                      fontWeight: "700",
-                    }}
-                  >
-                    <span onClick={() => handleDeleteProduct(cart)}>X</span>
+                  <td>{subTotal(products.amount, products.price)}</td>
+                  <td>
+                    <span
+                      className="deleteBtn"
+                      onClick={() => handleDeleteProduct(products)}
+                    >
+                      <AiOutlineDelete size={20} />
+                    </span>
                   </td>
                 </tr>
               </>
             </tbody>
           ))}
         </table>
+        <footer>
+          <Button> Finalizar pedido</Button>
+          <div className="cartTotal">
+            <strong> Total: {formatCurrency(total)} </strong>
+          </div>
+        </footer>
       </Container>
     </>
   );
