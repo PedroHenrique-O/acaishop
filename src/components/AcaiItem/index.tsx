@@ -1,8 +1,11 @@
 import { useState } from "react";
+
 import { addItemToCart } from "../../reducers/CartSlice";
 import { useAppDispatch } from "../../reducers/hooks";
 import { Button } from "../Button/styled";
 import { ProductsItem } from "./styled";
+
+import { ToastContainer, toast } from "react-toastify";
 
 interface AcaiItemProps {
   _id: string;
@@ -17,7 +20,10 @@ export function AcaiItem(data: AcaiItemProps) {
   const [acai] = useState(data);
 
   const dispatch = useAppDispatch();
-  const handleDispatch = () => dispatch(addItemToCart(acai));
+  const handleDispatch = () => {
+    dispatch(addItemToCart(acai));
+    toast.success("Adicionado ao carrinho!");
+  };
 
   return (
     <ProductsItem>
@@ -29,7 +35,7 @@ export function AcaiItem(data: AcaiItemProps) {
         <h4> R$ {acai.price} </h4>
         <p>{acai.ingredients}</p>
       </div>
-      {/* <button onClick={() => dispatch(reset())}> delete </button> */}
+
       <Button onClick={handleDispatch}>Adicionar +</Button>
     </ProductsItem>
   );
