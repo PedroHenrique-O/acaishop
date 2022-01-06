@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { useAppDispatch } from "./hooks";
+import { toast } from "react-toastify";
+
 import { RootState } from "./store";
 
 interface Products {
@@ -13,10 +14,12 @@ interface Products {
 
 interface cartState {
   products: Products[];
+  isOpen: boolean;
 }
 
 const initialState: cartState = {
   products: [],
+  isOpen: false,
 };
 
 const cartSlice = createSlice({
@@ -36,7 +39,9 @@ const cartSlice = createSlice({
         state.products.push({ ...payload, amount: 1 });
       }
     },
-
+    openCart: (state, { payload }: PayloadAction<boolean>) => {
+      state.isOpen = payload;
+    },
     removeFromCart: (state, { payload }: PayloadAction<Products>) => {
       state.products = state.products.filter(
         (product) => product._id !== payload._id
@@ -69,6 +74,7 @@ const cartSlice = createSlice({
 export const {
   addItemToCart,
   reset,
+  openCart,
   removeFromCart,
   incrementAmount,
   decrementAmount,
