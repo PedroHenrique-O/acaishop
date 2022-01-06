@@ -7,15 +7,17 @@ interface AcaiItemProps {
   ingredients: string;
 }
 interface ButtonProps {
-  onClick: (products: AcaiItemProps) => void;
+  onClick?: (products: AcaiItemProps) => void;
+  large?: boolean;
 }
 export const Button = styled.button<ButtonProps>`
   background: #94187d;
   border: none;
   border-radius: 0.5rem;
-  width: 8rem;
-  padding: 0.3rem;
-  color: #ddd;
+  width: ${(props) => (props.large ? "16rem" : "8rem")};
+  padding: ${(props) => (props.large ? "0.8rem" : "0.3rem")};
+  color: ${(props) => (props.large ? "#fff" : "#eee")};
+  font-size: ${(props) => props.large && "1.5em"};
   font-weight: 700;
   box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.2);
 
