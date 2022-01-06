@@ -8,10 +8,6 @@ export const Container = styled.div`
   background-size: cover;
   justify-content: space-between;
   align-items: center;
-  @media screen and (max-width: 650px) {
-    display: flex;
-    flex-direction: column;
-  }
 
   .heroWrapp {
     display: flex;
@@ -31,7 +27,7 @@ export const Container = styled.div`
       width: 50%;
       justify-content: center;
       align-items: center;
-      margin: none;
+      margin: 0 auto;
     }
 
     h1 {

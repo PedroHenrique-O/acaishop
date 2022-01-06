@@ -9,6 +9,8 @@ export const Container = styled.nav`
   height: 60px;
   background: transparent;
   margin: 0 3.5rem;
+  @media screen and (max-width: 600px) {
+  }
 
   .logo {
     font-size: 1.7rem;
@@ -40,7 +42,7 @@ export const Container = styled.nav`
       }
     }
     @media screen and (max-width: 650px) {
-      opacity: 0;
+      display: none;
     }
   }
 
@@ -49,6 +51,10 @@ export const Container = styled.nav`
     justify-content: center;
     align-items: center;
     position: relative;
+    /* @media screen and (max-width: 600px) {
+      right: 180px;
+      align-items: space-between;
+    } */
 
     svg {
       &:hover {
@@ -66,6 +72,8 @@ export const Container = styled.nav`
       border-radius: 1rem;
       padding: 0.1rem 0.7rem;
       width: 1.5rem;
+      @media screen and (max-width: 600px) {
+      }
     }
   }
 `;

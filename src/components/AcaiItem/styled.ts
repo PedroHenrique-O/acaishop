@@ -26,6 +26,7 @@ export const ProductsItem = styled.div`
 
   .infoWrapp {
     margin-bottom: 1rem;
+
     h1 {
       margin-top: 0.5rem;
       font-size: 1.2rem;
