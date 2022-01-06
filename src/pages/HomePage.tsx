@@ -1,11 +1,12 @@
-import { Header } from "../components/Header";
-import { Shop } from "../components/Shop";
+import { Router } from "../router";
+import { GlobalStyle } from "../styles/global";
 
 export function HomePage() {
   return (
     <>
-      <Header />
-      <Shop />
+      <Router />
+
+      <GlobalStyle />
     </>
   );
 }
