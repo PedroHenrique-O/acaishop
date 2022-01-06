@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../reducers/hooks";
 import { Button } from "../Button/styled";
 import { ProductsItem } from "./styled";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 interface AcaiItemProps {
   _id: string;

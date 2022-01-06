@@ -3,7 +3,6 @@ import { configureStore } from "@reduxjs/toolkit";
 import CartSlice from "./CartSlice";
 
 import {
-  persistStore,
   persistReducer,
   FLUSH,
   REHYDRATE,
@@ -22,12 +21,6 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, CartSlice);
-
-// export const store = configureStore({
-//   reducer: {
-//     cart: CartSlice,
-//   },
-// });
 
 export const store = configureStore({
   reducer: { cart: persistedReducer },

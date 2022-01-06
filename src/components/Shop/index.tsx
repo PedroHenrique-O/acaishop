@@ -6,7 +6,6 @@ import { AcaiItem } from "../AcaiItem";
 import { Header } from "../Header";
 import { Container } from "./styled";
 import ReactLoading from "react-loading";
-import { ToastContainer } from "react-toastify";
 
 interface Products {
   _id: string;
