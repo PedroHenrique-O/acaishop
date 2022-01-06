@@ -1,4 +1,6 @@
-![açai+](https://user-images.githubusercontent.com/55575751/148444235-fd663773-126b-4877-9f66-e46224fff91b.gif)![açaimobile](https://user-images.githubusercontent.com/55575751/148457828-da003039-9f24-4181-8a63-b32da0be4f2d.gif)
+|                                                       Web                                                       |                                                        Mobile                                                        |
+| :-------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------: |
+| ![açai+](https://user-images.githubusercontent.com/55575751/148444235-fd663773-126b-4877-9f66-e46224fff91b.gif) | ![açaimobile](https://user-images.githubusercontent.com/55575751/148457828-da003039-9f24-4181-8a63-b32da0be4f2d.gif) |
 
 <h1> Technologies: </h1>
 
