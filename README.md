@@ -1,4 +1,4 @@
-![Açai](https://user-images.githubusercontent.com/55575751/147957171-5714e003-1fd7-4abb-abc0-9df8206b9dcd.png)
+![açai+](https://user-images.githubusercontent.com/55575751/148444235-fd663773-126b-4877-9f66-e46224fff91b.gif)
 
 <h1> Technologies: </h1>
 
