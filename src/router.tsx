@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Cart } from "./components/Cart";
 
-import { HomePage } from "./pages/HomePage";
+import { Hero } from "./components/Hero";
+import { Shop } from "./components/Shop";
 
 export function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/" element={<Hero />} />
+        <Route path="/shop" element={<Shop />} />
       </Routes>
     </BrowserRouter>
   );
