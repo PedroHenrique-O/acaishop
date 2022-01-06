@@ -1,25 +1,34 @@
-import { Container } from "./styled";
+import { Container, NavLink } from "./styled";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useAppSelector } from "../../reducers/hooks";
+import { useAppDispatch, useAppSelector } from "../../reducers/hooks";
 import { Link } from "react-router-dom";
+import { Sidebar } from "../Sidebar";
+
+import { openCart } from "../../reducers/CartSlice";
 export function Header() {
   const cart = useAppSelector((state) => state.cart.products.length);
 
-  <Link to="/cart" />;
+  const dispatch = useAppDispatch();
+  const handleOpenCart = () => dispatch(openCart(true));
 
   return (
-    <Container>
-      <Link to="/">
-        <h1>
+    <>
+      <Sidebar />
+      <Container>
+        <Link className="logo" to="/">
           Açai <span>+</span>
-        </h1>
-      </Link>
-      <Link to="/cart">
-        <div className="cartButton">
+        </Link>
+        <nav>
+          <NavLink to=""> OFERTAS </NavLink>
+          <NavLink to=""> PROMOÇÕES </NavLink>
+          <NavLink to=""> CONTATO </NavLink>
+        </nav>
+
+        <div onClick={handleOpenCart} className="cartButton">
           <span> {cart}</span>
           <AiOutlineShoppingCart size="2.5rem" />
         </div>
-      </Link>
-    </Container>
+      </Container>
+    </>
   );
 }
