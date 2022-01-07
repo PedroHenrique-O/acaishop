@@ -6,7 +6,7 @@ import { Sidebar } from "../Sidebar";
 
 import { openCart } from "../../reducers/CartSlice";
 export function Header() {
-  const cart = useAppSelector((state) => state.cart.products.length);
+  const cartLength = useAppSelector((state) => state.cart.products.length);
 
   const dispatch = useAppDispatch();
   const handleOpenCart = () => dispatch(openCart(true));
@@ -25,7 +25,7 @@ export function Header() {
         </nav>
 
         <div onClick={handleOpenCart} className="cartButton">
-          <span> {cart}</span>
+          <span> {cartLength}</span>
           <AiOutlineShoppingCart size="2.5rem" />
         </div>
       </Container>

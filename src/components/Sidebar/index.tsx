@@ -19,8 +19,7 @@ interface Products {
 }
 
 export function Sidebar() {
-  const cart = useAppSelector((state) => state.cart.products);
-  const isOpen = useAppSelector((state) => state.cart.isOpen);
+  const { products, isOpen } = useAppSelector((state) => state.cart);
 
   const dispatch = useAppDispatch();
 
@@ -36,7 +35,7 @@ export function Sidebar() {
     return formatCurrency(amount * parseFloat(price));
   };
 
-  const total = cart.reduce((total, item) => {
+  const total = products.reduce((total, item) => {
     return total + item.amount * parseFloat(item.price);
   }, 0);
 
@@ -49,10 +48,12 @@ export function Sidebar() {
         </div>
       </Icon>
 
-      {cart.length === 0 && <div className="emptyCart"> Carrinho vazio...</div>}
+      {products.length === 0 && (
+        <div className="emptyCart"> Carrinho vazio...</div>
+      )}
 
-      {cart.length > 0 &&
-        cart.map((products) => (
+      {products.length > 0 &&
+        products.map((products) => (
           <div className="cartWrapp">
             <div className="productItem">
               <img width={80} src={products.image} alt={products.name} />
@@ -79,7 +80,7 @@ export function Sidebar() {
           <div>{formatCurrency(total)}</div>
         </div>
 
-        <CartButton to=""> Peça agora! </CartButton>
+        <CartButton to=""> Finalizar </CartButton>
       </SideBtnWrap>
     </Container>
   );

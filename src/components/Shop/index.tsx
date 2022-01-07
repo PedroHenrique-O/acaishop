@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { selectCount } from "../../reducers/CartSlice";
-import { useAppSelector } from "../../reducers/hooks";
+import { addItemToCart } from "../../reducers/CartSlice";
+import { useAppDispatch } from "../../reducers/hooks";
 import { api } from "../../services/api";
 import { AcaiItem } from "../AcaiItem";
 import { Header } from "../Header";
 import { Container } from "./styled";
 import ReactLoading from "react-loading";
+import { toast } from "react-toastify";
 
 interface Products {
   _id: string;
@@ -18,10 +19,7 @@ interface Products {
 
 export function Shop() {
   const [products, setProducts] = useState<Products[]>([]);
-  const cart = useAppSelector(selectCount);
   const [isLoading, setIsLoading] = useState(false);
-  console.log(cart.products);
-  console.log("Products: ", products);
 
   const getProducts = async () => {
     setIsLoading(true);
@@ -35,6 +33,12 @@ export function Shop() {
     getProducts();
   }, []);
 
+  const dispatch = useAppDispatch();
+  const handleDispatch = (acai: Products) => {
+    dispatch(addItemToCart(acai));
+    toast.success("Adicionado ao carrinho!");
+  };
+
   return (
     <>
       <Header />
@@ -43,7 +47,11 @@ export function Shop() {
           <ReactLoading type="spin" color="#fff" height={"10%"} width={"10%"} />
         )}
         {products.map((item) => (
-          <AcaiItem key={item._id} {...item} />
+          <AcaiItem
+            key={item._id}
+            data={item}
+            handleDispatch={() => handleDispatch(item)}
+          />
         ))}
       </Container>
     </>
